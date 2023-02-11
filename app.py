@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
-from bson import ObjectId
-
 app = Flask(__name__)
 
 ## certifi 맥OS 환경설정을 위한 패키지 설치입니다.
@@ -8,10 +6,8 @@ from pymongo import MongoClient
 import certifi
 
 ca = certifi.where()
-client = MongoClient("mongodb+srv://test:sparta@cluster0.exrmfp9.mongodb.net/?retryWrites=true&w=majority",
-                     tlsCAFile=ca)
+client = MongoClient("mongodb+srv://test:sparta@cluster0.exrmfp9.mongodb.net/?retryWrites=true&w=majority", tlsCAFile=ca)
 db = client.team6
-
 
 @app.route('/')
 def home():
@@ -21,6 +17,38 @@ def home():
 # @app.route('/detail')
 # def detail_page():
 #     return render_template('detail_page.html')
+# 메인 카드 데이터 불러오기
+@app.route("/pet", methods=["GET"])
+def pet_get():
+    pet_list = list(db.pet.find({},{'_id':False}))
+    return jsonify({'pet':pet_list})
+
+# 회원가입 페이지 이동
+@app.route('/signup')
+def signup_page():
+    return render_template('signup.html')
+
+
+# 회원가입 POST
+@app.route("/users", methods=["POST"])
+def user_post():
+    user_receive = request.form['user_give']
+
+    user_list = list(db.users.find({},{'_id':False}))
+    count = len(user_list)+1
+
+    doc = {
+        'num':count,
+        'bucket':bucket_receive,
+        'done':0
+    }
+
+    db.bucket.insert_one(doc)
+    return jsonify({'msg': '등록 완료!'})
+
+@app.route('/detail')
+def detail_page():
+    return render_template('detail_page.html')
 
 # 상세페이지 구현
 @app.route('/detail/<int:num>')
@@ -72,6 +100,7 @@ def detail_delete():
     num = request.form['num']
     db.pet.delete_one({'num': int(num)})
     return jsonify({'msg': '삭제 완료!'})
+
 
 
 if __name__ == '__main__':
