@@ -1,0 +1,92 @@
+body {
+  background-color: #ffab91;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffab91;
+}
+.up_de {
+  display: flex;
+}
+.navbar__logo {
+  margin-left: 100px;
+}
+#update {
+  margin-right: 10px;
+}
+#delete {
+  margin-right: 100px;
+}
+.wrap {
+  margin-top: 100px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  background-color: #ffccbc;
+}
+.img_box {
+  width: 30%;
+  height: 100%;
+}
+#dog_img {
+  margin-top: 40px;
+  margin-left: 67px;
+  width: 100%;
+  height: 70%;
+}
+
+.comment_box {
+  margin-left: 10px;
+  width: 60%;
+  height: 500px;
+  background-color: #ff8a65;
+  display: flex;
+  justify-content: center;
+}
+.comment_contents {
+  margin-top: 50px;
+  margin-left: 50px;
+  border: 1px solid black;
+  width: 60%;
+  height: 80%;
+  border-radius: 5px;
+}
+.dog_name {
+  border: 1px solid black;
+}
+
+#home_btn {
+  background-color: #6d4c41;
+  border: 0;
+  color: white;
+}
+#update_btn {
+  background-color: #6d4c41;
+  border: 0;
+  color: white;
+  margin-right: 50px;
+}
+
+#num {
+  display: none;
+}
+.info {
+  width: 80%;
+  height: 50px;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.detail_info {
+  display: flex;
+  margin-left: 10px;
+}
+.info_comment {
+  width: 70%;
+  height: 100px;
+}
