@@ -1,3 +1,6 @@
+* {
+  font-family: "Jua", sans-serif;
+}
 body {
   background-color: #ffab91;
 }
@@ -31,10 +34,10 @@ body {
   height: 100%;
 }
 #dog_img {
-  margin-top: 40px;
-  margin-left: 67px;
-  width: 100%;
-  height: 70%;
+  margin-top: 25px;
+  margin-left: 64px;
+  width: 400px;
+  height: 400px;
 }
 
 .comment_box {
@@ -46,15 +49,15 @@ body {
   justify-content: center;
 }
 .comment_contents {
-  margin-top: 50px;
-  margin-left: 50px;
+  margin: 0 auto;
+  margin-top: 30px;
   border: 1px solid black;
   width: 60%;
-  height: 80%;
-  border-radius: 5px;
+  height: 90%;
+  border-radius: 10px;
 }
 .dog_name {
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 #home_btn {
@@ -76,20 +79,17 @@ body {
   display: none;
 }
 .info {
-  width: 70%;
-  height: 50px;
+  width: 80%;
+  height: 40px;
   border: 1px solid black;
   margin-top: 20px;
   margin-left: 10px;
   font-size: 20px;
   display: flex;
   align-items: center;
+  border-radius: 10px;
 }
 .detail_info {
   display: flex;
   margin-left: 10px;
-}
-.info_comment {
-  width: 70%;
-  height: 100px;
 }

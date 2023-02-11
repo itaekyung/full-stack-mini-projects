@@ -21,6 +21,10 @@ db = client.team6
 def home():
     return render_template('index.html')
 
+@app.route('/info')
+def info():
+    return render_template('addImage.html')
+
 # 상세 페이지 기본
 # @app.route('/detail')
 # def detail_page():
@@ -60,6 +64,7 @@ def login():
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
+
 @app.route('/main')
 def go_main():
     token_receive = request.cookies.get('mytoken')
@@ -74,14 +79,10 @@ def go_main():
             return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
         except jwt.exceptions.DecodeError:
             return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
-        
+
 @app.route('/userfind')
 def go_userfind():
     return render_template('userfind.html')
-
-@app.route('/info')
-def info():
-    return render_template('addImage.html')
 
 @app.route('/userfind/find', methods=["POST"])
 def userfind():
@@ -121,13 +122,55 @@ def user_post():
         'user_pw': pw_hash,
         'user_email': email_receive
     }
-    
+
     db.users.insert_one(doc)
     return jsonify({'msg': '회원가입 완료!'})
 
 @app.route('/detail')
 def detail_page():
     return render_template('detail_page.html')
+
+#이미지 추가 버튼
+@app.route("/info", methods=["POST"])
+def info_add():
+    imgdata = request.form['imgdata']
+    name = request.form['name']
+    breed = request.form['breed']
+    age = request.form['age']
+    gender = request.form['gender']
+    comment = request.form['comment']
+    count = list(db.pet.find({},{'_id':False}))
+    # num = len(count) + 1
+    if count == []:
+        num = 1
+        doc = {
+            'num':num,
+            'name': name,
+            'breed': breed,
+            'age': age,
+            'gender': gender,
+            'comment': comment,
+            'imgdata' : imgdata
+        }
+        db.pet.insert_one(doc)
+        return jsonify({'msg': '작성완료'})
+    elif name == '' or comment == '' or breed == '' or age =='' or gender=='':
+        return jsonify({'msgnot': '내용을 입력해주세요'})
+    else:
+        ddd = count[len(count) - 1]
+        num = ddd['num']
+        num = num + 1
+        doc = {
+            'num':num,
+            'name': name,
+            'breed': breed,
+            'age': age,
+            'gender': gender,
+            'comment': comment,
+            'imgdata' : imgdata
+        }
+        db.pet.insert_one(doc)
+        return jsonify({'msg': '작성완료'})
 
 # 상세페이지 구현
 @app.route('/detail/<int:num>')
@@ -138,7 +181,8 @@ def detail(num):
     gender = db.pet.find_one({'num':num})['gender']
     comment = db.pet.find_one({'num':num})['comment']
     num = db.pet.find_one({'num':num})['num']
-    return render_template('detail_page.html',num=num, name=name, breed=breed, age=age, gender=gender, comment=comment)
+    imgdata = db.pet.find_one({'num':num})['imgdata']
+    return render_template('detail_page.html',num=num, name=name, breed=breed, age=age, gender=gender, comment=comment, imgdata=imgdata)
 
 @app.route('/update')
 def update_page():
@@ -153,7 +197,10 @@ def update(num):
     gender = db.pet.find_one({'num':num})['gender']
     comment = db.pet.find_one({'num':num})['comment']
     num = db.pet.find_one({'num':num})['num']
-    return render_template('update.html',num=num, name=name, breed=breed, age=age, gender=gender, comment=comment)
+    imgdata = db.pet.find_one({'num':num})['imgdata']
+
+
+    return render_template('update.html',num=num, name=name, breed=breed, age=age, gender=gender, comment=comment, imgdata=imgdata)
 
 #  수정 기능
 @app.route("/update", methods=["PUT"])

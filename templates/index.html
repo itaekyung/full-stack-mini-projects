@@ -12,124 +12,127 @@
     <title>REHOME PET</title>
 
     <style>
-        @font-face {
-            font-family: 'NanumSquareNeo-Variable';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
+      @font-face {
+        font-family: "NanumSquareNeo-Variable";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
 
-        * {
-            font-family: 'NanumSquareNeo-Variable';
-        }
+      * {
+        font-family: "NanumSquareNeo-Variable";
+      }
 
-        body {
-            overflow-y: scroll;
-        }
+      body {
+        overflow-y: scroll;
+      }
 
-        body::-webkit-scrollbar {
-            display: none;
-        }
+      body::-webkit-scrollbar {
+        display: none;
+      }
 
-        .nav-container {
-            position: fixed;
-            display: block;
-            z-index: 1;
-            width: 100%;
-        }
+      .nav-container {
+        position: fixed;
+        display: block;
+        z-index: 1;
+        width: 100%;
+      }
 
-        .navbar {
-            max-width: 980px;
-            margin: auto;
-            padding-left: 0px;
-        }
+      .navbar {
+        max-width: 980px;
+        margin: auto;
+        padding-left: 0px;
+      }
 
-        .div-cell-md {
-            display: block;
-            margin: 20px auto 0px auto;
-            width: 95%;
-            max-width: 980px;
-        }
+      .div-cell-md {
+        display: block;
+        margin: 20px auto 0px auto;
+        width: 95%;
+        max-width: 980px;
+      }
 
-        .carousel-item {
-            margin-top: 56px;
-            border-radius: 5px;
-        }
+      .carousel-item {
+        margin-top: 56px;
+        border-radius: 5px;
+      }
 
-        .carousel-item > img {
-            border-radius: 5px 5px 0px 0px;
-            object-fit: cover;
-            margin: auto;
-            max-width: 980px;
-            max-height: 500px;
-        }
+      .carousel-item > img {
+        border-radius: 5px 5px 0px 0px;
+        object-fit: cover;
+        margin: auto;
+        max-width: 980px;
+        max-height: 500px;
+      }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            margin-top: 56px;
-        }
+      .carousel-control-prev,
+      .carousel-control-next {
+        margin-top: 56px;
+      }
 
-        .testbg{
-            background-color: green;
-        }
+      .testbg {
+        background-color: green;
+      }
 
-        .ctt-md {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
+      .ctt-md {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
 
-        .carousel-caption {
-            position: relative;
-            right: 0%;
-            left: 0%;
-            max-width: 980px;
-            margin: auto;
-            bottom: 0rem;
-            border-radius: 0px 0px 5px 5px;
-            background-color: black;
-            opacity: 90%;
-        }
+      .carousel-caption {
+        position: relative;
+        right: 0%;
+        left: 0%;
+        max-width: 980px;
+        margin: auto;
+        bottom: 0rem;
+        border-radius: 0px 0px 5px 5px;
+        background-color: black;
+        opacity: 90%;
+      }
 
-        .d-flex > button:nth-child(1) {
-            margin-right: 10px;
-        }
+      .d-flex > button:nth-child(1) {
+        margin-right: 10px;
+      }
     </style>
     <script>
-        $(document).ready(function () {
-            listing();
-        });
+      $(document).ready(function () {
+        listing();
+      });
 
-        function listing() {
-            $.ajax({
-                type: 'GET',
-                url: '/pet',
-                data: {},
-                success: function (response) {
-                    let rows = response['pet']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let comment = rows[i]['comment']
-
-                        let temp_html = `<div class="col">
+      function listing() {
+        $.ajax({
+          type: "GET",
+          url: "/pet",
+          data: {},
+          success: function (response) {
+            let rows = response["pet"];
+            for (let i = 0; i < rows.length; i++) {
+              let name = rows[i]["name"];
+              let comment = rows[i]["comment"];
+              let num = rows[i]["num"];
+              let temp_html = `<div class="col" onclick="detailpage(${num})">
                                             <div class="card">
-                                            <img src="./templates/img/4.jpg" class="card-img-top" alt="...">
+                                            <img src="./img/4.jpg" class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <h5 class="card-title">${name}</h5>
                                                 <p class="card-text">${comment}</p>
                                             </div>
                                             </div>
-                                        </div>`
-                        $('.row').append(temp_html)
-                    }
-                }
-            })
-        }
-
-        function info_page() {
-            window.open("/info", "a", "width=1000, height=800, left=100, top=50");
-        }
+                                        </div>`;
+              $(".row").append(temp_html);
+            }
+          }
+        });
+      }
+      function detailpage(num) {
+        location.href = "/detail/" + num;
+      }
+      function info_page() {
+        window.open("/info", "a", "width=1000, height=800, left=100, top=50");
+      }
     </script>
 </head>
 
