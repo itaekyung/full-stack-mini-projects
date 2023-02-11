@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+    <title>로그인</title>
+    <style>
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .back {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 95%;
+            max-width: 400px;
+
+            padding: 100px 50px;
+            background-color: aliceblue;
+        }
+        .mar1 {
+            margin-bottom: 20%;
+        }
+        .mar2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+
+            margin-bottom: 15%;
+        }
+    </style>
+    <script>
+        if ($.cookie('mytoken') != null) $('#log_inout').append(`<li><a>로그인</a></li>`)
+        else $('#log_inout').append(`<li><a>로그아웃</a></li>`)
+
+        function login() {
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: {id_give: $('#user_id').val(), pw_give: $('#user_pw').val()},
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
+                        // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
+                        $.cookie('mytoken', response['token']);
+
+                        alert('로그인 완료!')
+                        window.location.href = '/main'
+                    } else {
+                        // 로그인이 안되면 에러메시지를 띄웁니다.
+                        alert(response['msg'])
+                        let cur = response['cur']
+                        if (cur == 'id') $('#user_id').focus()
+                        else if (cur == 'pw') $('#user_pw').focus()
+                    }
+                }
+            })
+        }
+        function userfind() {
+            window.open(
+                "/userfind",
+                "a",
+                "width=600, height=700, left=100, top=50"
+            )
+        }
+        function pwfind() {
+            window.open(
+                "/pwfind",
+                "a",
+                "width=600, height=700, left=100, top=50"
+            )
+        }
+    </script>
+</head>
+
+<body>
+    <div class="center">
+        <div class="back">
+            <div class="mar1"><h1>로그인</h1></div>
+            <form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="user_id" placeholder="" required="required">
+                <label for="user_id">아이디</label>
+            </div>
+            <div class="form-floating mar2">
+                <input type="password" class="form-control" id="user_pw" placeholder="Password" required="required">
+                <label for="user_pw">비밀번호</label>
+            </div>
+            <div class="mar2">
+                <button onclick="login()" type="button" class="btn btn-primary">로그인</button>
+                <button type="button" class="btn btn-outline-primary" onClick="location.href='/'">회원가입</button>
+            </div>
+            </form>
+            <div>
+                <a href="" onclick="userfind()">아이디 찾기</a> / <a href="" onclick="pwfind()">비밀번호 찾기</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
