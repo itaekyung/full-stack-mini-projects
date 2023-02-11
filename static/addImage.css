@@ -60,10 +60,8 @@
     background: #ddd;
 }
 
-
-
 #content_box {
-    height: 700px;
+    height: 800px;
 }
 
 .dropbox {
@@ -126,11 +124,21 @@
     position: absolute;
 
     width: 800px;
-    height: 450px;
+    height: 650px;
     margin-top: 20px;
     margin-left: 50px;
+}
 
+#btn_box{
+    margin: 750px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
 
+#btn_box > button{
+    width: 100px;
+    margin-right: 10px;
+    border-radius: 3px;
 }
 
 .user_info {

@@ -49,15 +49,17 @@ input.addEventListener("drop", (event) => {
 
 });
 
+
+
 function preview(file, idx) {
   var reader = new FileReader();
   reader.onload = (function(f, idx) {
     return function(e) {
        changeDropClass();
       var div = '<div class="changeBox" id="changeBox"> \
-        <img class="imgBox" src="' + e.target.result + '" title="' + escape(f.name) + '"/> \
+        <img class="imgBox" id="img_id_box" src="' + e.target.result + '" title="' + escape(f.name) + '"/> \
       </div>';
-      console.log(e.target.result);
+
       $("#imageBox").append(div);
     };
   })(file, idx);
@@ -68,4 +70,43 @@ function preview(file, idx) {
 function changeDropClass(){
     document.querySelector('#drop_box').classList.replace('dropbox', 'hidebox');
 
+}
+
+
+function data_insert() {
+    var imgData = document.querySelector('#img_id_box')?.src;
+
+
+
+    let doc = {
+        'name': $('#pat_name').val(),
+        'breed': $('#pat_breed').val(),
+        'age': $('#pat_age').val(),
+        'gender': $('#pat_sex').val(),
+        'comment': $('.form-control').val(),
+        'imgdata': imgData
+    }
+
+    if ($('#pat_name').val() == '' || $('#pat_breed').val() == '' || $('#pat_age').val() == ''
+        || $('#pat_sex').val() == '' || $('.form-control').val() == '' || typeof imgData == "undefined") {
+        alert('내용을 정확히 입력해주세요.');
+    } else {
+        console.log(doc)
+        $.ajax({
+            type: "POST",
+            url: "/info",
+            data: doc,
+            success: function (response) {
+                console.log(response['msg']);
+                window.location.href = '/';
+            }
+        })
+    }
+
+}
+
+
+
+function close_popup(){
+    window.location.href ='/';
 }

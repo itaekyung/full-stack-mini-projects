@@ -17,7 +17,6 @@
 </head>
 <body>
     <div class="wrap">
-        <form id="add_form" method="post" action="/users/addImageContent">
             <div id="addImageBox">
                 <div class="main_box" id="imageBox">
                     <div id="drop_box" class="dropbox">
@@ -68,25 +67,18 @@
                                     <label for="pat_name">설명 란</label>
                                 </h3>
 
-                                <textarea class="form-control" placeholder="글 내용" name="patContent" maxlength="2028"
+                                <textarea class="form-control",id="text_content" placeholder="글 내용" name="patContent" maxlength="2028"
                                           style="height:180px"></textarea></td>
                             </div>
                         </div>
-                        <div class="btn_box">
-                            <button id="btn_input">
-                                입력
-                            </button>
-                            <button id="btn_canel">
-                                취소
-                            </button>
+                        <div id="btn_box">
+                               <button onclick="data_insert()">입력</button>
+                                <button>취소</button>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-        </form>
-
     </div>
 </body>
 </html>
