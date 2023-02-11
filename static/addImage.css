@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#addImageBox {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 1000px;
+}
+
+.main_box {
+    border: 1px solid black;
+    background-color: rgba(0, 0, 0, 0);
+    width: 900px;
+    margin: 0 auto 10px;
+
+}
+
+#imageBox {
+    height: 400px;
+}
+
+#imageBox.active{
+    background: #ddd;
+}
+
+
+
+#content_box {
+    height: 500px;
+}
+
+#dropbox {
+    position: absolute;
+    width: 800px;
+    height: 350px;
+    margin-top: 20px;
+    margin-left: 50px;
+    border: 4px dashed #ddd;
+    border-radius: 5px;
+    font-size: 40px;
+
+    text-align: center;
+    line-height: 300px;
+    font-weight: bold;
+
+    user-select: none;
+    transition: 0.4s;
+}
+
+#dropbox.active{
+    background: #ddd;
+}
+#content {
+    position: absolute;
+
+    width: 800px;
+    height: 450px;
+    margin-top: 20px;
+    margin-left: 50px;
+
+
+}
+
+.user_info {
+    width: 460px;
+    height: 80px;
+    margin: 20px;
+
+}
+
+#main_content {
+
+    width: 750px;
+    height: 200px;
+    margin: 20px;
+}
+
+.title_info {
+    font-size: 20px;
+}
+
+.pat_input_box {
+    display: inline-block;
+    width: 400px;
+    height: 45px;
+    background-color: white;
+}
+
+.int {
+    width: 334px;
+    height: 29px;
+    padding: 0 25px 0 0;
+}
+
+#pat_name {
+    border: none;
+}
+
+#pat_name:focus {
+    outline: none;
+}
+
+#pat_species {
+    border: none;
+}
+
+#pat_species:focus {
+    outline: none;
+}
+
+#pat_explanation {
+    width: 700px;
+    height: 150px;
+}
+
