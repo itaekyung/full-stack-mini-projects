@@ -16,7 +16,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/static/detail.css" />
+    <link rel="stylesheet" href="/static/update.css" />
     <script
       src="https://kit.fontawesome.com/771f34c71f.js"
       crossorigin="anonymous"
@@ -25,113 +25,124 @@
   </head>
   <body>
     <div class="navbar">
-      <div class="navbar__logo">
-        <button
-          onclick="window.location.href='/'"
-          type="button"
-          class="btn btn-outline-primary"
-          id="home_btn"
-        >
-          <i class="fas fa-paw"></i> 홈
-        </button>
-      </div>
+      <div class="navbar__logo"></div>
       <div></div>
       <div class="up_de">
         <div id="update">
           <button
             type="button"
             class="btn btn-outline-primary"
-            onclick="update()"
+            onclick="post()"
             id="update_btn"
           >
-            수정
-          </button>
-        </div>
-        <div id="delete">
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-            onclick="deletepage()"
-            id="delete_btn"
-          >
-            삭제
+            수정하기
           </button>
         </div>
       </div>
     </div>
     <div class="wrap">
       <div class="img_box">
-        <img
-          id="dog_img"
-          class="dog_img"
-          src="/static/img1.jpeg"
-          alt="dog image"
-        />
-        <!-- 이미지 넣는 공간 -->
+        <img id="dog_img" class="dog_img" src="/static/img1.jpeg" // {{이미지}}
+        alt="dog image" />
       </div>
       <div class="comment_box">
         <div class="comment_contents">
           <div class="info">
             <div class="detail_info">
               이름 :
-              <div>초코</div>
-              <!-- 강아지 이름 넣는 공간 -->
+              <textarea
+                type="text"
+                class="urlBoxIn form-control"
+                id="name"
+                placeholder="이름"
+              >
+이름</textarea
+              >
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
               품종 :
-              <div>포메</div>
-              <!-- 강아지 품종 넣는 공간 -->
+              <textarea
+                type="text"
+                class="urlBoxIn form-control"
+                id="breed"
+                placeholder="품종"
+              >
+품종</textarea
+              >
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
               나이 :
-              <div>12</div>
-              <!-- 강아지 나이 넣는 공간 -->
+              <textarea
+                type="text"
+                class="urlBoxIn form-control"
+                id="age"
+                placeholder="나이"
+              >
+나이</textarea
+              >
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
               성별 :
-              <div>여아</div>
-              <!-- 강아지 성별 넣는 공간 -->
+              <textarea
+                type="text"
+                class="urlBoxIn form-control"
+                id="gender"
+                placeholder="성별"
+              >
+성별</textarea
+              >
             </div>
           </div>
           <div class="info info_comment">
             <div class="detail_info">
               설명 :
-              <div>우리집 강아지</div>
-              <!-- 강아지 설명 넣는 공간 -->
+              <textarea
+                type="text"
+                class="urlBoxIn form-control"
+                id="comment"
+                placeholder="설명"
+              >
+설명</textarea
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="num">{{ num }}</div>
+    <textarea id="num" style="font-size: 0">{{num}}</textarea>
 
     <script>
-      let num = document.getElementById("num").textContent;
+      function post() {
+        let name = $("#name").val();
+        let breed = $("#breed").val();
+        let age = $("#age").val();
+        let gender = $("#gender").val();
+        let comment = $("#comment").val();
+        let num = $("#num").val();
 
-      function update() {
-        window.open("/update", "a", "width=1000, height=800, left=100, top=50");
-      }
-      // 업데이트 + num으로 이동해야함.
-      function deletepage() {
-        if (!confirm("정말로 삭제하시겠습니까?")) {
-          alert("삭제가 취소되었습니다.");
-        } else {
-          $.ajax({
-            type: "DELETE",
-            url: "/detail",
-            data: { num: num },
-            success: function (response) {
-              alert(response["msg"]);
-              location.href = "/";
-            },
-          });
-        }
+        $.ajax({
+          type: "PUT",
+          url: "/update",
+          data: {
+            name: name,
+            breed: breed,
+            age: age,
+            gender: gender,
+            comment: comment,
+            num: num,
+          },
+          success: function (response) {
+            alert(response["msg"]);
+            window.open("", "_self").close();
+            opener.parent.location.reload();
+          },
+        });
       }
     </script>
   </body>
