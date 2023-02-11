@@ -13,10 +13,34 @@ db = client.team6
 def home():
     return render_template('index.html')
 
+# 메인 카드 데이터 불러오기
 @app.route("/pet", methods=["GET"])
 def pet_get():
     pet_list = list(db.pet.find({},{'_id':False}))
     return jsonify({'pet':pet_list})
+
+# 회원가입 페이지 이동
+@app.route('/signup')
+def signup_page():
+    return render_template('signup.html')
+
+
+# 회원가입 POST
+@app.route("/users", methods=["POST"])
+def user_post():
+    user_receive = request.form['user_give']
+    
+    user_list = list(db.users.find({},{'_id':False}))
+    count = len(user_list)+1
+    
+    doc = {
+        'num':count,
+        'bucket':bucket_receive,
+        'done':0
+    }
+
+    db.bucket.insert_one(doc)
+    return jsonify({'msg': '등록 완료!'})
 
 @app.route('/detail')
 def detail_page():

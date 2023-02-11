@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./index.css">
 
-    <title>Document</title>
+    <title>REHOME PET</title>
 
     <style>
         @font-face {
@@ -131,7 +131,6 @@
 </head>
 
 <body>
-    <script type="text/javascript" src="./index.js"></script>
     <!--상단 nav 영역-->
     <div class="nav-container">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -154,12 +153,15 @@
                 </ul>
                 <form class="d-flex" role="search">
                     <button class="btn btn-outline-success" type="submit">로그인</button>
-                    <button class="btn btn-outline-success" type="submit">회원가입</button>
+                    <button class="btn btn-outline-success" type="submit">
+                        <a href="./signup.html">회원가입</a>
+                    </button>
                 </form>
                 </div>
             </div>
         </nav>
     </div>
+    <!--상단 nav 영역 끝-->
     
     <!--상단 메인 배너(캐러셀)-->
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
@@ -200,11 +202,13 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <!--상단 메인 배너(캐러셀) 끝-->
     
     <div class="img-add div-cell-md ctt-md">
         <button type="button" class="btn btn-primary ctt-md">이미지 추가 버튼(임시)</button>
     </div>
 
+    <!--메인 카드 영역-->
     <div class="div-cell-md">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <!--낱개 카드(for문 사용 예정)-->
@@ -219,5 +223,6 @@
             </div>
         </div>
     </div>
+    <!--메인 카드 영역 끝-->
 </body>
 </html>
