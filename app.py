@@ -26,6 +26,7 @@ def home():
 # def detail_page():
 #     return render_template('detail_page.html')
 # 메인 카드 데이터 불러오기
+
 @app.route("/pet", methods=["GET"])
 def pet_get():
     pet_list = list(db.pet.find({},{'_id':False}))
@@ -73,9 +74,14 @@ def go_main():
             return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
         except jwt.exceptions.DecodeError:
             return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+        
 @app.route('/userfind')
 def go_userfind():
     return render_template('userfind.html')
+
+@app.route('/info')
+def info():
+    return render_template('addImage.html')
 
 @app.route('/userfind/find', methods=["POST"])
 def userfind():
@@ -101,21 +107,23 @@ def signup_page():
 
 
 # 회원가입 POST
-@app.route("/users", methods=["POST"])
+@app.route("/user", methods=["POST"])
 def user_post():
-    user_receive = request.form['user_give']
-
-    user_list = list(db.users.find({},{'_id':False}))
-    count = len(user_list)+1
+    name_receive = request.form['name_give']
+    id_receive = request.form['id_give']
+    pw_receive = request.form['pw_give']
+    pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
+    email_receive = request.form['email_give']
 
     doc = {
-        'num':count,
-        'bucket':bucket_receive,
-        'done':0
+        'user_name': name_receive,
+        'user_id': id_receive,
+        'user_pw': pw_hash,
+        'user_email': email_receive
     }
-
-    db.bucket.insert_one(doc)
-    return jsonify({'msg': '등록 완료!'})
+    
+    db.users.insert_one(doc)
+    return jsonify({'msg': '회원가입 완료!'})
 
 @app.route('/detail')
 def detail_page():
