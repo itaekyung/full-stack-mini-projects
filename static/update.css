@@ -66,14 +66,17 @@ body {
   background-color: #6d4c41;
   border: 0;
   color: white;
-  margin-right: 50px;
 }
-
+#delete_btn {
+  background-color: #6d4c41;
+  border: 0;
+  color: white;
+}
 #num {
   display: none;
 }
 .info {
-  width: 80%;
+  width: 70%;
   height: 50px;
   border: 1px solid black;
   margin-top: 20px;

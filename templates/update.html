@@ -49,67 +49,27 @@
         <div class="comment_contents">
           <div class="info">
             <div class="detail_info">
-              이름 :
-              <textarea
-                type="text"
-                class="urlBoxIn form-control"
-                id="name"
-                placeholder="이름"
-              >
-이름</textarea
-              >
+              이름 : <input type="text" id="name" value="{{name}}" />
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              품종 :
-              <textarea
-                type="text"
-                class="urlBoxIn form-control"
-                id="breed"
-                placeholder="품종"
-              >
-품종</textarea
-              >
+              품종 : <input type="text" id="breed" value="{{breed}}" />
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              나이 :
-              <textarea
-                type="text"
-                class="urlBoxIn form-control"
-                id="age"
-                placeholder="나이"
-              >
-나이</textarea
-              >
+              나이 : <input type="text" id="age" value="{{age}}" />
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              성별 :
-              <textarea
-                type="text"
-                class="urlBoxIn form-control"
-                id="gender"
-                placeholder="성별"
-              >
-성별</textarea
-              >
+              성별 : <input type="text" id="gender" value="{{gender}}" />
             </div>
           </div>
           <div class="info info_comment">
             <div class="detail_info">
-              설명 :
-              <textarea
-                type="text"
-                class="urlBoxIn form-control"
-                id="comment"
-                placeholder="설명"
-              >
-설명</textarea
-              >
+              설명 : <input type="text" id="comment" value="{{comment}}" />
             </div>
           </div>
         </div>
@@ -118,6 +78,9 @@
     <textarea id="num" style="font-size: 0">{{num}}</textarea>
 
     <script>
+      let num = $("#num").val();
+      console.log(num);
+
       function post() {
         let name = $("#name").val();
         let breed = $("#breed").val();
