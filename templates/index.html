@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <!--상단 nav 영역-->
+    <div class="nav-container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">REHOME PET</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">보호소</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">개인 / 임시보호</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <button class="btn btn-outline-success" type="submit">로그인</button>
+                    <button class="btn btn-outline-success" type="submit">회원가입</button>
+                </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <!--상단 메인 배너(캐러셀)-->
+    <div id="carousel" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+            <img src="./img/1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>사지 말고 리홈하세요!</h5>
+                <p>리홈펫에서 여러분의 새로운 가족을 소개해드립니다:)</p>
+            </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+            <img src="./img/2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>리홈펫 특별 이벤트!</h5>
+                <p>리홈펫에서 분양하시면 무료 예방접종과 고급사료를 증정합니다!</p>
+            </div>
+            </div>
+            <div class="carousel-item">
+            <img src="./img/3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>[데일리팁] 반려견 간단 건강검진 방법</h5>
+                <p>반려견의 건강을 간단히 체크해볼 수 있는 방법을 알려드릴게요.</p>
+            </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <div class="img-add div-cell-md ctt-md">
+        <button type="button" class="btn btn-primary ctt-md">이미지 추가 버튼(임시)</button>
+    </div>
+
+    <div class="div-cell-md">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!--낱개 카드(for문 사용 예정)-->
+            <div class="col">
+              <div class="card">
+                <img src="./img/4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                  <img src="./img/4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card">
+                  <img src="./img/4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                  <img src="./img/4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  </div>
+                </div>
+            </div>
+            <!--exemple
+            <div class="col">
+                <div class="card">
+                  <img src="./img/`${num}`.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{name}</h5>
+                    <p class="card-text">{comment}</p>
+                  </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+</body>
+</html>
+
