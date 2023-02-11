@@ -21,7 +21,11 @@
       src="https://kit.fontawesome.com/771f34c71f.js"
       crossorigin="anonymous"
     ></script>
-    <title>detail_page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <title>강아지 소개 페이지</title>
   </head>
   <body>
     <div class="navbar">
@@ -61,60 +65,51 @@
     </div>
     <div class="wrap">
       <div class="img_box">
-        <img
-          id="dog_img"
-          class="dog_img"
-          src="/static/img1.jpeg"
-          alt="dog image"
-        />
-        <!-- 이미지 넣는 공간 -->
+        <div></div>
+        <img id="dog_img" class="dog_img" src="{{imgdata}}" alt="dog image" />
       </div>
       <div class="comment_box">
         <div class="comment_contents">
           <div class="info">
             <div class="detail_info">
-              이름 :
+              이름 : &nbsp;
               <div>{{name}}</div>
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              품종 :
+              품종 : &nbsp;
               <div>{{breed}}</div>
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              나이 :
+              나이 :&nbsp;
               <div>{{age}}</div>
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              성별 :
+              성별 :&nbsp;
               <div>{{gender}}</div>
             </div>
           </div>
           <div class="info info_comment">
             <div class="detail_info">
-              설명 :
+              설명 :&nbsp;
               <div>{{comment}}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="num">3</div>
+    <div id="num">{{num}}</div>
 
     <script>
       let num = document.getElementById("num").textContent;
 
       function update() {
-        window.open(
-          "/update/" + num,
-          "a",
-          "width=1000, height=800, left=100, top=50"
-        );
+        window.location.href = "/update/" + num;
       }
 
       function deletepage() {

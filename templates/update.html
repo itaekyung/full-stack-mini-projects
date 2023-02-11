@@ -21,7 +21,11 @@
       src="https://kit.fontawesome.com/771f34c71f.js"
       crossorigin="anonymous"
     ></script>
-    <title>detail_page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <title>수정 페이지</title>
   </head>
   <body>
     <div class="navbar">
@@ -42,34 +46,38 @@
     </div>
     <div class="wrap">
       <div class="img_box">
-        <img id="dog_img" class="dog_img" src="/static/img1.jpeg" // {{이미지}}
+        <img id="dog_img" class="dog_img" src="{{imgdata}}" // {{이미지}}
         alt="dog image" />
       </div>
       <div class="comment_box">
         <div class="comment_contents">
           <div class="info">
             <div class="detail_info">
-              이름 : <input type="text" id="name" value="{{name}}" />
+              이름 : &nbsp;<input type="text" id="name" value="{{name}}" />
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              품종 : <input type="text" id="breed" value="{{breed}}" />
+              품종 : &nbsp;<input type="text" id="breed" value="{{breed}}" />
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              나이 : <input type="text" id="age" value="{{age}}" />
+              나이 : &nbsp;<input type="text" id="age" value="{{age}}" />
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
-              성별 : <input type="text" id="gender" value="{{gender}}" />
+              성별 : &nbsp;<input type="text" id="gender" value="{{gender}}" />
             </div>
           </div>
           <div class="info info_comment">
             <div class="detail_info">
-              설명 : <input type="text" id="comment" value="{{comment}}" />
+              설명 : &nbsp;<input
+                type="text"
+                id="comment"
+                value="{{comment}}"
+              />
             </div>
           </div>
         </div>
@@ -88,7 +96,6 @@
         let gender = $("#gender").val();
         let comment = $("#comment").val();
         let num = $("#num").val();
-
         $.ajax({
           type: "PUT",
           url: "/update",
@@ -102,8 +109,7 @@
           },
           success: function (response) {
             alert(response["msg"]);
-            window.open("", "_self").close();
-            opener.parent.location.reload();
+            window.location.href = "/detail/" + num;
           },
         });
       }
