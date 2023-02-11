@@ -11,115 +11,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <title>Add Image</title>
+    <link rel="stylesheet" href="/static/addImage.css">
+     <script defer src="/static/addImage.js"></script>
 
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-
-        #addImageBox{
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            width: 900px;
-            height: 1000px;
-        }
-
-        .main_box{
-            background-color: bisque;
-            width: 900px;
-            margin: 0 auto 10px;
-
-        }
-
-        #imageBox{
-            height: 400px;
-        }
-
-        #content_box{
-            height: 500px;
-        }
-
-        #add_image{
-            position: absolute;
-            width: 800px;
-            height: 350px;
-            margin-top: 20px;
-            margin-left: 50px;
-            border: 4px dashed black;
-        }
-
-        #content{
-            position: absolute;
-
-            width: 800px;
-            height: 450px;
-            margin-top: 20px;
-            margin-left: 50px;
-
-
-        }
-        .user_info{
-            width: 460px;
-            height: 80px;
-            margin: 20px;
-
-        }
-
-        #main_content {
-
-            width: 750px;
-            height: 200px;
-            margin: 20px;
-        }
-
-        .title_info {
-            font-size: 20px;
-        }
-
-        .pat_input_box {
-            display: inline-block;
-            width: 400px;
-            height: 45px;
-            background-color: white;
-        }
-
-        .int {
-            width: 334px;
-            height: 29px;
-            padding: 0 25px 0 0;
-        }
-
-        #pat_name {
-            border: none;
-        }
-
-        #pat_name:focus {
-            outline: none;
-        }
-        #pat_species{
-            border: none;
-        }
-        #pat_species:focus{
-            outline: none;
-        }
-
-        #pat_explanation{
-            width: 700px;
-            height: 150px;
-        }
-
-    </style>
 </head>
 <body>
     <div class="wrap">
         <form id="add_form" method="post" action="/users/addImageContent">
             <div id="addImageBox">
                 <div class="main_box" id="imageBox">
-                    <div id="add_image">
-
+                    <div id="drop_box" class="dropbox">
+                        <div class="defaultImgBox">
+                            <h3>DROP ME!!</h3>
+                        </div>
                     </div>
+                    <input id="input" class="input" accept="image/*" type="file" required="true" multiple="true" hidden="true">
                 </div>
 
                 <div id="container">
@@ -135,10 +41,26 @@
                             </div>
                             <div class="user_info">
                                 <h3 class="title_info">
-                                    <label for="pat_species">견종</label>
+                                    <label for="pat_breed">견종</label>
                                 </h3>
                                 <span class="pat_input_box">
-                                    <input type="text" id="pat_species" class="int" maxlength="20">
+                                    <input type="text" id="pat_breed" class="int" maxlength="20">
+                                </span>
+                            </div>
+                            <div class="user_info">
+                                <h3 class="title_info">
+                                    <label for="pat_age">나이</label>
+                                </h3>
+                                <span class="pat_input_box">
+                                    <input type="text" id="pat_age" class="int" maxlength="20">
+                                </span>
+                            </div>
+                            <div class="user_info">
+                                <h3 class="title_info">
+                                    <label for="pat_sex">성별</label>
+                                </h3>
+                                <span class="pat_input_box">
+                                    <input type="text" id="pat_sex" class="int" maxlength="20">
                                 </span>
                             </div>
                             <div id="main_content">
@@ -148,9 +70,15 @@
 
                                 <textarea class="form-control" placeholder="글 내용" name="patContent" maxlength="2028"
                                           style="height:180px"></textarea></td>
-
-
                             </div>
+                        </div>
+                        <div class="btn_box">
+                            <button id="btn_input">
+                                입력
+                            </button>
+                            <button id="btn_canel">
+                                취소
+                            </button>
                         </div>
                     </div>
                 </div>
