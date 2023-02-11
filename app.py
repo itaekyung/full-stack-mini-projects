@@ -19,7 +19,19 @@ db = client.team6
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    token_receive = request.cookies.get('mytoken')
+    if token_receive is None:
+        return render_template('index.html')
+    else:
+        try:
+            payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+            print(payload)
+            return render_template('index.html', user_name=payload["user_name"], user_id=payload['user_id'])
+        except jwt.ExpiredSignatureError:
+            return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+        except jwt.exceptions.DecodeError:
+            return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
 
 @app.route('/info')
 def info():
@@ -48,8 +60,7 @@ def login():
 
     user_name = db.users.find_one({"user_id": id_receive})['user_name']
 
-    #pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
-    pw_hash = pw_receive
+    pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
     result = db.users.find_one({'user_id': id_receive, 'user_pw': pw_hash})
     print(result)
 
@@ -63,7 +74,6 @@ def login():
         return jsonify({'result': 'success', 'token': token})
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
-
 
 @app.route('/main')
 def go_main():
@@ -79,6 +89,10 @@ def go_main():
             return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
         except jwt.exceptions.DecodeError:
             return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
+
+@app.route('/loginform')
+def go_login():
+    return render_template('login.html')
 
 @app.route('/userfind')
 def go_userfind():

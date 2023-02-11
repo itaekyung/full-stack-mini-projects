@@ -133,6 +133,11 @@
       function info_page() {
         window.open("/info", "a", "width=1000, height=800, left=100, top=50");
       }
+        function logout(){
+            alert('가지마용 ㅜ0ㅜ')
+            $.removeCookie('mytoken')
+            window.location.reload()
+        }
     </script>
 </head>
 
@@ -158,9 +163,14 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <button class="btn btn-outline-success" type="submit">로그인</button>
+                    {%if user_name%}
+                    <p><span class="name"><b>{{ user_name }}</b></span>님 환영합니다.</p>
+                    <a href="/" onclick="logout()">로그아웃</a>
+                    {%else%}
+                    <a href="/loginform">로그인</a>
+                    {%endif%}
                     <button class="btn btn-outline-success" type="submit">
-                        <a href="/signup">회원가입</a>
+                        <a href="./signup.html">회원가입</a>
                     </button>
                 </form>
                 </div>

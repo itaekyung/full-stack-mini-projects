@@ -49,9 +49,6 @@
         }
     </style>
     <script>
-        if ($.cookie('mytoken') != null) $('#log_inout').append(`<li><a>로그인</a></li>`)
-        else $('#log_inout').append(`<li><a>로그아웃</a></li>`)
-
         function login() {
             $.ajax({
                 type: "POST",
@@ -83,14 +80,7 @@
                 "width=600, height=700, left=100, top=50"
             )
         }
-        
-        function pwfind() {
-            window.open(
-                "/pwfind",
-                "a",
-                "width=600, height=700, left=100, top=50"
-            )
-        }
+
     </script>
 </head>
 

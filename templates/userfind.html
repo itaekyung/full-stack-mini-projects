@@ -61,8 +61,7 @@
                 success: function (response) {
                     if (response['result'] == 'success') {
                         let user_id = response['user_id']
-                        $('#user_id').append(`<br><p>아이디 : ${user_id}</p>`)
-                        //$('#findid_add').text(${user_id})
+                        alert("아이디 : " + user_id)
                     } else {
                         alert(response['msg'])
                         let cur = response['cur']
