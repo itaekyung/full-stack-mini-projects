@@ -74,50 +74,49 @@
           <div class="info">
             <div class="detail_info">
               이름 :
-              <div>초코</div>
-              <!-- 강아지 이름 넣는 공간 -->
+              <div>{{name}}</div>
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
               품종 :
-              <div>포메</div>
-              <!-- 강아지 품종 넣는 공간 -->
+              <div>{{breed}}</div>
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
               나이 :
-              <div>12</div>
-              <!-- 강아지 나이 넣는 공간 -->
+              <div>{{age}}</div>
             </div>
           </div>
           <div class="info">
             <div class="detail_info">
               성별 :
-              <div>여아</div>
-              <!-- 강아지 성별 넣는 공간 -->
+              <div>{{gender}}</div>
             </div>
           </div>
           <div class="info info_comment">
             <div class="detail_info">
               설명 :
-              <div>우리집 강아지</div>
-              <!-- 강아지 설명 넣는 공간 -->
+              <div>{{comment}}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div id="num">{{ num }}</div>
+    <div id="num">3</div>
 
     <script>
       let num = document.getElementById("num").textContent;
 
       function update() {
-        window.open("/update", "a", "width=1000, height=800, left=100, top=50");
+        window.open(
+          "/update/" + num,
+          "a",
+          "width=1000, height=800, left=100, top=50"
+        );
       }
-      // 업데이트 + num으로 이동해야함.
+
       function deletepage() {
         if (!confirm("정말로 삭제하시겠습니까?")) {
           alert("삭제가 취소되었습니다.");
