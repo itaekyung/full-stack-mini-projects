@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REHOME PET</title>
+
+    <style>
+        img {
+            display: block;
+            margin: auto;
+            width: 190px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: "S-Core Dream 7";
+        }
+
+        .ex {
+            font-family: "S-Core Dream 3";
+            text-align: left;
+            margin-left: 80px;
+        }
+
+        .ex1 {
+            font-family: "S-Core Dream 3";
+            text-align: right;
+            margin-left: 80px;
+        }
+
+        .submit {
+            width: 352px;
+            height: 40px;
+            border-radius: 0.5rem;
+        }
+
+        .box {
+            padding: white;
+            border: 1px solid lightgray;
+            width: 512px;
+            height: 720px;
+            text-align: center;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .container {
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -256px;
+            margin-top: -345px;
+        }
+
+        .button1 {
+            text-align: center;
+            width: 178px;
+            height: 40px;
+            display: inline-block;
+            border: 1px solid black;
+            background: white;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: "S-Core Dream 3";
+        }
+
+        .button2 {
+            background: black;
+            text-align: center;
+            width: 178px;
+            height: 40px;
+            display: inline-block;
+            color: #ffffff;
+            border: 1px solid black;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: "S-Core Dream 3";
+        }
+
+        .button1:hover {
+            background: black;
+            color: white;
+        }
+
+        .button2:hover {
+            background: white;
+            color: black;
+        }
+
+        .bar {
+            width: 360px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <a href="./index.html"><img src="#" id="logo"></a>
+            <div class="box">
+                <h1>회원가입</h1>
+                <p class="ex">아이디</p>
+                    <input type="text" class="submit" name="userid">
+                <p class="ex">비밀번호</p>
+                    <input type="password" class="submit" name="userpw">
+                <p class="ex">비밀번호 확인</p>
+                    <input type="password" class="submit" name="userpw">
+                <p class="ex">전화번호</p>
+                    <input type="text" class="submit" name="userpn">
+                <p class="ex">이메일</p>
+                    <input type="text" class="submit" name="useremail">
+                <hr class='bar'>
+                <input type="button" value="취소" class="button1" onclick="location.href='01_index.html'">
+                <input type="submit" value="회원가입" class="button2">
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
