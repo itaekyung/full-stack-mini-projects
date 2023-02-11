@@ -11,8 +11,79 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <title>Add Image</title>
-    <link rel="stylesheet" href="/static/addImage.css">
-     <script defer src="/static/addImage.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #addImageBox{
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            width: 900px;
+            height: 1000px;
+        }
+
+        .main_box{
+            background-color: bisque;
+            width: 900px;
+            margin: 0 auto 10px;
+
+        }
+
+        #imageBox{
+            height: 400px;
+        }
+
+        #content_box{
+            height: 500px;
+        }
+
+        #add_image{
+            position: absolute;
+            width: 800px;
+            height: 350px;
+            margin-top: 20px;
+            margin-left: 50px;
+            border: 4px dashed black;
+        }
+
+        #content{
+            position: absolute;
+
+            width: 800px;
+            height: 450px;
+            margin-top: 20px;
+            margin-left: 50px;
+
+
+        }
+        .user_info{
+            width: 460px;
+            height: 80px;
+            margin: 20px;
+
+        }
+
+        #main_content {
+
+            width: 750px;
+            height: 200px;
+            margin: 20px;
+        }
+
+        .title_info {
+            font-size: 20px;
+        }
+
+        .pat_input_box {
+            display: inline-block;
+            width: 400px;
+            height: 45px;
+            background-color: white;
+        }
 
 </head>
 <body>
